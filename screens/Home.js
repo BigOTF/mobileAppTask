@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, StatusBar, Pressable, FlatList, Alert } from "react-native";
+import { View, Text, StyleSheet, StatusBar, Pressable, FlatList, Alert, Image } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default function Home({navigation}) {
@@ -50,7 +50,7 @@ export default function Home({navigation}) {
 
             <View style={styles.headerContainer}>
                 <Ionicons name='calendar-outline' size={20} color='black' />
-                <Text style={styles.headerText}>Today</Text>
+                <Text style={styles.headerText}>Task</Text>
                 <View style={styles.headerLengthContainer}>
                     <Text style={{fontSize: 12}}>{todoData.length}</Text>
                 </View>
@@ -105,8 +105,10 @@ export default function Home({navigation}) {
                     }}
                     ItemSeparatorComponent={<View style={{marginTop: 10}}/>}
                     ListEmptyComponent={() => (
-                        <View style={{alignItems: 'center', marginTop: 30}}>
-                            <Text style={{fontSize: 30, fontWeight: '600'}}>No Post!</Text>
+                        <View style={{alignItems: 'center', marginTop: 80}}>
+                            <Image source={require('../assets/addTask.png')} style={{width: 227, height: 227}} resizeMode='contain' />
+                            <Text style={{fontSize: 20, fontWeight: '600'}}>What do you want to do?</Text>
+                            <Text style={{fontSize: 16, marginTop: 12}}>Tap + to add your tasks</Text>
                         </View>
                     )}
                     refreshing={isRefresh}
@@ -141,11 +143,11 @@ const styles = StyleSheet.create({
         paddingBottom: 40 */
     },
     formContainer: {
-        borderRadius: 12,
+        borderRadius: 14,
         backgroundColor: '#fff',
-        paddingVertical: 25,
+        paddingVertical: 20,
         paddingStart: 30,
-        paddingEnd: 15,
+        paddingEnd: 20,
         gap: 20
     },
     formText: {
@@ -162,13 +164,13 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         flexDirection: 'row', 
-        gap: 5, 
+        gap: 6, 
         justifyContent: 'center', 
         alignItems: 'center', 
-        marginBottom: 10
+        marginBottom: 15
     },
     headerText: {
-        fontSize: 20, 
+        fontSize: 22, 
         fontWeight: 'bold'
     },
     headerLengthContainer: {
